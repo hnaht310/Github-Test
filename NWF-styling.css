@@ -1,0 +1,225 @@
+/* Start the entire section (heading + first transfer) on a new page */
+[dir] .nx-repeating-section-container[stylecontrolid="_cb0094893a7948a48096d7cd3b05f105"] {
+  break-before: page;
+  page-break-before: always;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  padding: 2px !important;
+}
+
+/* Force each transfer (row) in the repeating section to start on a new page (Except the first transfer: rs-row-_cb0094893a7948a48096d7cd3b05f105-0)*/
+[dir] .ntx-repeating-section-repeated-section[data-e2e^="rs-row-_cb0094893a7948a48096d7cd3b05f105-"]:not([data-e2e$="-0"]) {
+  break-before: page;
+  page-break-before: always;
+}
+
+/* Add minimum padding to each repeated section */
+[dir] .ntx-repeating-section-repeated-section[data-e2e^="rs-row-_cb0094893a7948a48096d7cd3b05f105-"] {
+  padding: 2px !important;
+}
+
+
+
+/* Reduce vertical spacing */
+[dir] .ntx-repeating-section-repeated-section .form-group {
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+}
+
+/* Optional: tighten spacing inside the label/control blocks */
+[dir] .ntx-repeating-section-repeated-section .nx-zinc-control-group {
+  margin-top: 1px !important;
+  margin-bottom: 1px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+}
+
+
+/* Force a page break before this Job Dependencies section */
+[dir] .nx-group-control-container[stylecontrolid="_7f09a0a0968d4434806f2e91d889a995"] {
+break-before: page !important; /* This forces a page break before this element */
+page-break-before: always !important; /* This is the legacy equivalent for compatibility */
+break-inside: avoid !important;     /* Tries to keep content inside this group from splitting across pages */
+page-break-inside: avoid !important;
+}
+
+/* Apply page breaks to all repeating sections*/
+@media print {
+  .ntx-repeating-section-repeated-section:nth-child(5n) {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+}
+
+
+/* TEST */
+@media screen {
+  /* --- TOOLTIP FOR: Required Predecessors --- */
+  /* The main header container for "Required Predecessors" */
+  [data-e2e="_b2fb61829c6745318066cec78ad70e92-header"] {
+    position: relative;
+    cursor: default;
+  }
+
+  /* Target the <strong> text "Required Predecessors" for hover */
+  [data-e2e="_b2fb61829c6745318066cec78ad70e92-header"] strong {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+  }
+
+  /* Tooltip content for "Required Predecessors" */
+  [data-e2e="_b2fb61829c6745318066cec78ad70e92-header"] strong::after {
+    content: "Example: Job A (predecessor) runs daily. Job B (successor) runs on the first day of each month. Job B will always wait for Job A to complete successfully before it starts executing.";
+    
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 400px; /* Fixed: Changed from max-width to width: 400px */
+    white-space: normal;
+    word-break: normal;
+
+    background-color: #333;
+    color: #cc8323;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 9pt;
+    z-index: 1000;
+    text-align: left;
+    line-height: 1.4; /* Fixed: Added line-height */
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* Arrow for "Required Predecessors" tooltip */
+  [data-e2e="_b2fb61829c6745318066cec78ad70e92-header"] strong::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #333;
+    z-index: 1001;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* Show "Required Predecessors" tooltip on hover */
+  [data-e2e="_b2fb61829c6745318066cec78ad70e92-header"] strong:hover::after,
+  [data-e2e="_b2fb61829c6745318066cec78ad70e92-header"] strong:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* --- NEW TOOLTIP FOR: If predecessors (Maybe predecessors) --- */
+  /* The main header container for "If predecessors (Maybe predecessors)" */
+  [data-e2e="_6820b0b9ac8540bc887420759e311a08-header"] {
+    position: relative;
+    cursor: default;
+  }
+
+  /* Target the <strong> text "If predecessors (Maybe predecessors)" for hover */
+  [data-e2e="_6820b0b9ac8540bc887420759e311a08-header"] strong {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+  }
+
+  /* Tooltip content for "If predecessors (Maybe predecessors)" */
+  [data-e2e="_6820b0b9ac8540bc887420759e311a08-header"] strong::after {
+    content: "Example: Job A (predecessor) runs Monday through Saturday. Job B (successor) runs daily. On Sundays, when Job A is not scheduled to run, Job B will execute independently without waiting for Job A.";
+    
+    position: absolute;
+    left: calc(100% + 10px); /* Positions the tooltip 10px to the right of the 'strong' text */
+    top: 50%; /* Aligns the tooltip vertically in the middle of the 'strong' text */
+    transform: translateY(-50%); /* Adjusts vertical alignment for perfect centering */
+    
+    width: 400px; /* Fixed: Changed from max-width to width: 400px */
+    white-space: normal;
+    word-break: normal;
+
+    background-color: #333;
+    color: #cc8323;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 9pt;
+    z-index: 1000;
+    text-align: left;
+    line-height: 1.4; /* Fixed: Added line-height */
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* Arrow for "If predecessors (Maybe predecessors)" tooltip */
+  [data-e2e="_6820b0b9ac8540bc887420759e311a08-header"] strong::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 6px solid #333;
+    z-index: 1001;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  /* Show "If predecessors (Maybe predecessors)" tooltip on hover */
+  [data-e2e="_6820b0b9ac8540bc887420759e311a08-header"] strong:hover::after,
+  [data-e2e="_6820b0b9ac8540bc887420759e311a08-header"] strong:hover::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+/* TEST 2 */
+@media screen {
+  /* IMPORTANT: Make each individual repeating row a positioning context */
+  .ntx-repeating-section-repeated-section {
+    position: relative; /* This ensures absolute children position relative to THIS row */
+    /* You might also want to add some right padding to this row if the button overlaps content */
+    /* padding-right: 40px; */ /* Adjust as needed */
+  }
+
+  /* Shorter width for ALL input boxes with the 'compact-input' class */
+  .nx-textbox-control.compact-input input {
+    width: 520px; /* Adjust as needed */
+    max-width: 550px;
+    box-sizing: border-box;
+    /* Add !important if needed: width: 150px !important; */
+  }
+
+  /* Position and Align the delete button ONLY in sections that have a 'compact-input' */
+  .ntx-repeating-section-repeated-section:has(.compact-input) .ntx-repeating-section-overlay {
+    position: absolute; /* Keep absolute */
+    
+    right: 5px !important; /* Adjust horizontally as needed */
+    top: 50% !important; /* Start at 50% */
+    
+    /* Fine-tune vertical alignment: */
+    transform: translateY(calc(-50% + 9px)) !important; /* Adjust '2px' as needed */
+    
+    width: auto !important;
+    background: transparent !important;
+    padding: 0 !important;
+    z-index: 10;
+  }
+}
